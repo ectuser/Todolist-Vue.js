@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Todolist</title>
+		<link href="css/style.css" type="text/css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="row">
+			<div class="left">
+				<div class="wrapper" v-for="item in items">
+					<div class="caption">
+						<p>{{item.number}}. {{item.caption}}</p>
+					</div>
+					<div class="time">
+						<p>{{item.time}}</p>
+					</div>
+					<div class="delete" 
+					style="cursor:pointer" 
+					v-on:click="del(item.number)">
+						del
+					</div>
+				</div>
+			</div>
+			<div class="right">
+				<br><br>
+				<input type="text" v-model="cap">
+				<br><br>
+				<input type="text" v-model="ti"><br>
+				<button v-on:click="press">Submit</button>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="vue.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+</html>
