@@ -19,6 +19,11 @@ var app = new Vue({
 		},
 		del: function(number){
 			this.items.splice(number,1),
+			this.items.forEach(function(item,i,items){
+				if(item.number > number){
+					item.number = item.number - 1
+				}
+			}),
 			this.count--
 		}
 	}
