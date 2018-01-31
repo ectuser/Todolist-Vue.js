@@ -8,32 +8,22 @@
 }
 .left{
 	flex: 4;
-	background-color: #ffa;
-	/*flex-flow: row wrap;*/
-}
-.right{
-	flex: 1;
-	background-color: #ffd;
-	flex-direction: column;
-	text-align: center;
-}
-@media(max-width: 500px){
-	.right{
-		text-align: left;
-	}
+	background-color: #EDEDED;
 }
 .wrapper{
 	display: flex;
 	width: 95%;
 	margin: 5px auto;
 	justify-content: space-around;
+	flex-flow: row wrap;
 }
-.caption, .time, .delete{
+.caption, .time, .delete, .inProcess, .done{
 	background-color: white;
-	border: 2px solid black;
+	border: 2px solid #4286f4;
 	border-radius: 5px;
-	font: 30px Calibri;
+	font: 25px Calibri;
 	margin: 0 2px;
+	color: #3771ce;
 }
 .caption{
 	flex: 3;
@@ -41,7 +31,61 @@
 .caption p{
 	margin: 0 5px;
 }
-.time , .delete {
+.time{
 	flex: 1;
 	text-align: center;
+}
+
+.delete{
+	color: #FFFFF3;
+	background-color: #dc3545;
+	border: 2px solid #dc3545;
+	flex: 0.49;
+	text-align: center;
+}
+.delete:hover{
+	background-color: #bd2130;
+	border: 2px solid #bd2130;
+}
+.inProcess{
+	color: white;
+	background-color: #ffc107;
+	border: 2px solid #ffc107;
+	flex: 0.49;
+	text-align: center;
+	cursor: pointer;
+}
+.inProcess:hover{
+	background-color: #d39e00;
+	border: 2px solid #d39e00;
+}
+.done{
+	color: white;
+	background-color: #28a745;
+	border: 2px solid #28a745;
+	flex: 0.49;
+	text-align: center;
+	cursor: pointer;
+}
+.done:hover{
+	background-color: #1e7e34;
+	border: 2px solid #1e7e34;
+}
+input, button{
+	margin: 2px;
+	border-radius: 2px;
+	font: 25px Calibri;
+	border: 2px solid #4286f4;
+	padding: 2px 0;
+	color: #3771ce;
+}
+button{
+	color: #FFF0E4;
+	background-color: #17b7d1;
+	border: 2px solid #17b7d1;
+	cursor: pointer;
+}
+button:hover{
+	background-color: #17a2b8;
+	border: 2px solid #17a2b8;
 }

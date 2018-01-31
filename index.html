@@ -9,6 +9,11 @@
 	<body>
 		<div class="row">
 			<div class="left">
+				<div class="wrapper">
+					<input type="text" v-model="cap" style="flex:3;text-align: center" placeholder="todo" size="20">
+					<input type="text" v-model="ti" style="flex:1;text-align: center" placeholder="time" size="7"><br>
+					<button v-on:click="press" style="flex:1">Submit</button>
+				</div>
 				<div class="wrapper" v-for="item in items">
 					<div class="caption">
 						<p>{{item.number}}. {{item.caption}}</p>
@@ -16,20 +21,21 @@
 					<div class="time">
 						<p>{{item.time}}</p>
 					</div>
+					<div v-on:click="changeStatus(item.number)" v-bind:class="{'inProcess':item.statusInProcess, 'done':item.statusDone}">{{item.printStatus}}</div>
 					<div class="delete" 
 					style="cursor:pointer" 
 					v-on:click="del(item.number)">
-						del
+						X
 					</div>
 				</div>
 			</div>
-			<div class="right">
+			<!-- <div class="right">
 				<br><br>
 				<input type="text" v-model="cap">
 				<br><br>
 				<input type="text" v-model="ti"><br>
 				<button v-on:click="press">Submit</button>
-			</div>
+			</div> -->
 		</div>
 	</body>
 	<script type="text/javascript" src="vue.js"></script>
