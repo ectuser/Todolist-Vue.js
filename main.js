@@ -4,8 +4,15 @@ var app = new Vue({
 	data:{
 		cap:undefined,
 		ti:undefined,
-		items:[],
+		forLS:{
+			items:[]
+		},
 		count:-1,
+		forLS:JSON.parse(localStorage.getItem("allData")),
+		count:JSON.parse(localStorage.getItem("count"))
+		// forLS:{
+		// 	items:[]
+		// },
 	},
 	methods:{
 		press: function(){
@@ -14,7 +21,7 @@ var app = new Vue({
 				this.cap = Math.round(Math.random() * (100-1)+1),
 				this.ti = Math.round(Math.random() * (100-1)+1)
 			}
-			this.items.push({
+			this.forLS.items.push({
 				caption: this.cap,
 				time: this.ti,
 				number:this.count,
@@ -23,19 +30,21 @@ var app = new Vue({
 				printStatus:'P'
 			}),
 			this.cap = '',
-			this.ti = ''
+			this.ti = '',
+			this.changeLocalStorage()
 		},
 		del: function(number){
-			this.items.splice(number,1)
-			this.items.forEach(function(item,i,items){
+			this.forLS.items.splice(number,1)
+			this.forLS.items.forEach(function(item,i){
 				if(item.number > number){
 					item.number = item.number - 1
 				}
 			}),
-			this.count--
+			this.count--,
+			this.changeLocalStorage()
 		},
 		changeStatus: function(number){
-			this.items.forEach(function(item,i,items){
+			this.forLS.items.forEach(function(item,i){
 				if(item.number === number){
 					if(item.statusInProcess === true){
 						item.statusDone = true,
@@ -49,25 +58,13 @@ var app = new Vue({
 					}
 				}
 			})
-			// if(this.items[2].statusInProcess === true){
-			// 	this.items[2].statusInProcess = false,
-			// 	this.items[2].printStatus = 'D',
-			// 	this.items[2].statusDone = true
-			// }
-			// this.items.forEach(function(item,i,items){
-
-			// }
-			// if(this.statusInProcess === true)
-			// {
-			// 	this.statusInProcess=false,
-			// 	this.statusDone=true,
-			// 	this.printStatus='D'
-			// }
-			// else{
-			// 	this.statusDone=false,
-			// 	this.statusInProcess=true,
-			// 	this.printStatus='P'
-			// }
+			this.changeLocalStorage()
+		},
+		changeLocalStorage: function(){
+			localStorage.clear(),
+			forLSjson = JSON.stringify(this.forLS),
+			localStorage.setItem("allData", forLSjson),
+			localStorage.setItem("count",this.count)
 		}
 	}
 })}
