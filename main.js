@@ -8,8 +8,8 @@ var app = new Vue({
 			items:[]
 		},
 		count:-1,
-		forLS:JSON.parse(localStorage.getItem("allData")),
-		count:JSON.parse(localStorage.getItem("count"))
+		forLS:JSON.parse(localStorage.getItem("allData") || '{ "items":[] }'),
+		count:JSON.parse(localStorage.getItem("count") || '-1' )
 		// forLS:{
 		// 	items:[]
 		// },
